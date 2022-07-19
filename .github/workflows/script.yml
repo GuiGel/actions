@@ -28,7 +28,7 @@ jobs:
           architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
           cache: 'poetry'
       - run: poetry install
-      - run: poetry run pytest
+      - run: poetry run pytest tests
 
       # Runs a single command using the runners shell
       - name: Run Python script
