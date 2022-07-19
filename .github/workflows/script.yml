@@ -27,8 +27,18 @@ jobs:
           python-version-file: '.python-version' # Read python version from a file
           architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
           cache: 'poetry'
-      - run: poetry install
-      - run: poetry run pytest tests
+      - name: Install dependencies
+      - run: |
+          poetry run pip install -U pip
+          poetry install
+      - name: Test with pytest
+      - run: |
+          poetry run pytest tests --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+      - name: Linter
+        run: |
+          poetry run black
+          poetry run flake8
+        continue-on-error: true
 
       # Runs a single command using the runners shell
       - name: Run Python script
