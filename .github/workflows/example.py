@@ -1,8 +1,9 @@
 import os
+import sys
 
 def main():
   print("Hello from GitHub Actions!")
-  print(f"We are using python version {python.__version__}")
+  print(f"We are using python version {sys.version}")
   token = os.environ.get("BEGIN_WITH_ACTION_SECRET_TOKEN")
   if not token:
     raise RunTimeError("BEGIN_ACTION_SECRET_TOKEN env var is not set!")
