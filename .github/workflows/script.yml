@@ -42,8 +42,8 @@ jobs:
 
       - name: Linter
         run: |
-          poetry run black
-          poetry run flake8
+          poetry run black actions
+          poetry run flake8 actions
         continue-on-error: true
 
       # Runs a single command using the runners shell
